@@ -5,15 +5,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import Day8_Programs.PresentAbsent;
- abstract class Compute {
-	abstract void getInput();
-	
+ 
+
+abstract class Compute {
+	abstract double getInput();
+	abstract double getSecondInput();
 }
+
 public class LengthCalculate extends Compute {
 	private static final Logger Log= LogManager.getLogger(LengthCalculate.class);
 	
 	
-	void getInput(){
+	double getInput(){
 		double dis;
 		Scanner sc= new Scanner(System.in);
 		
@@ -28,11 +31,47 @@ public class LengthCalculate extends Compute {
 		dis=Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));	
 		
 		Log.info("Length of line of coordinates"+"("+x1+","+y1+"),"+"("+x2+","+y2+")===>"+dis);
+		
+		return dis;
 	}
+	
+	 double getSecondInput() {
+		
+		Scanner sc2= new Scanner(System.in);
+		
+		double dis2;
+		
+		Log.info("Enter p1 cordinate");
+		int p1=sc2.nextInt(); 
+		Log.info("Enter p2 cordinate");
+		int p2=sc2.nextInt(); 
+		Log.info("Enter q1 cordinate");
+		int q1=sc2.nextInt(); 
+		Log.info("Enter q2 cordinate");
+		int q2=sc2.nextInt(); 
+		dis2=Math.sqrt((p2-p1)*(p2-p1) + (q2-q1)*(q2-q1));	
+		
+		Log.info("Length of line of coordinates"+"("+p1+","+p1+"),"+"("+q2+","+q2+")===>"+dis2);
+		
+		return dis2;
+	}
+	
+	
+	
+	
 	public static void main(String[] args) {
 		LengthCalculate obj= new LengthCalculate();
 		obj.getInput();
+		obj.getSecondInput();
 		
+		if (obj.getInput() == obj.getSecondInput())
+		{
+			
+			Log.info("Both lines are equale");
+			
+		}
+		else
+			Log.info("Both lines not are equale");
 		
 	}
 	
